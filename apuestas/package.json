@@ -1,5 +1,5 @@
 {
-  "name": "usuarios",
+  "name": "apuestas",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,7 +11,6 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^18.0.3",
     "express": "^5.2.1",
