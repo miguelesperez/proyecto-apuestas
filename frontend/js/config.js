@@ -9,8 +9,8 @@ const CONFIG = {
   BACKEND_IP: '192.168.100.3',
 
   // Nombre DNS de servidorUbuntu2 (registro tipo A en el BIND del Taller 4).
-  // CAMBIAR 'midominio.net' por el dominio de ustedes.
-  BACKEND_NOMBRE: 'servidor2.midominio.net',
+  // CAMBIAR 'hitblack.com' por el dominio de ustedes.
+  BACKEND_NOMBRE: 'servidor2.hitblack.com',
 
   // Puertos de cada microservicio
   PUERTO_PARTIDOS: 3001,
@@ -25,7 +25,7 @@ const CONFIG = {
 // ¿A qué host del backend le hablamos?
 // La decisión depende de CÓMO se abrió esta página:
 //   - Por IP      (http://192.168.100.2)      -> backend por IP
-//   - Por dominio (http://www.midominio.net)  -> backend por nombre DNS
+//   - Por dominio (http://www.hitblack.com)  -> backend por nombre DNS
 //   - En local    (localhost o doble clic)    -> backend en localhost
 // Así se demuestra que el sistema funciona tanto por IP como por dominio.
 // ------------------------------------------------------------
