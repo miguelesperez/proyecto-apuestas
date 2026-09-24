@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apuestas Fútbol · Ingreso</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <div class="login-fondo">
+    <div class="login-caja">
+      <div class="marca">⚽ Apuestas <span>Fútbol</span></div>
+      <p class="lema">Plataforma de apuestas sobre microservicios</p>
+
+      <div class="tarjeta">
+        <div class="pestanas">
+          <button class="pestana activa" data-panel="panel-login">Ingresar</button>
+          <button class="pestana" data-panel="panel-registro">Crear cuenta</button>
+        </div>
+
+        <!-- LOGIN: POST /api/usuarios/login (microservicio USUARIOS) -->
+        <section class="panel" id="panel-login">
+          <form id="form-login">
+            <div class="campo">
+              <label for="login-usuario">Usuario</label>
+              <input id="login-usuario" autocomplete="username" required>
+            </div>
+            <div class="campo">
+              <label for="login-password">Contraseña</label>
+              <input id="login-password" type="password" autocomplete="current-password" required>
+            </div>
+            <button class="boton boton-ancho" type="submit">Ingresar</button>
+          </form>
+        </section>
+
+        <!-- REGISTRO: POST /api/usuarios (microservicio USUARIOS) -->
+        <section class="panel" id="panel-registro" hidden>
+          <form id="form-registro">
+            <div class="campo">
+              <label for="reg-nombre">Nombre completo</label>
+              <input id="reg-nombre" required>
+            </div>
+            <div class="campo">
+              <label for="reg-email">Email</label>
+              <input id="reg-email" type="email" required>
+            </div>
+            <div class="campo">
+              <label for="reg-usuario">Usuario</label>
+              <input id="reg-usuario" autocomplete="username" required>
+            </div>
+            <div class="campo">
+              <label for="reg-password">Contraseña</label>
+              <input id="reg-password" type="password" autocomplete="new-password" required>
+            </div>
+            <button class="boton boton-ancho" type="submit">Crear cuenta</button>
+          </form>
+        </section>
+
+        <div id="mensaje" class="mensaje" hidden></div>
+      </div>
+    </div>
+    <div class="pie" id="pie-backend"></div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

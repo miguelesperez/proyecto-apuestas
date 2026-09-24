@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apuestas Fútbol · Administración</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="barra">
+    <div class="marca">⚽ Apuestas <span>Fútbol</span> · Admin</div>
+    <div class="barra-derecha">
+      <span id="nombre-usuario"></span>
+      <button class="enlace-boton" id="btn-salir">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <nav class="pestanas">
+      <button class="pestana activa" data-panel="panel-partidos">Partidos</button>
+      <button class="pestana" data-panel="panel-apuestas">Apuestas</button>
+      <button class="pestana" data-panel="panel-usuarios">Usuarios</button>
+    </nav>
+
+    <div id="mensaje" class="mensaje" hidden></div>
+
+    <!-- PARTIDOS :3001 — crear, finalizar, eliminar -->
+    <section class="panel" id="panel-partidos">
+      <div class="tarjeta">
+        <h2>Nuevo partido</h2>
+        <form id="form-partido">
+          <div class="fila-campos">
+            <div class="campo">
+              <label for="p-local">Equipo local</label>
+              <input id="p-local" required>
+            </div>
+            <div class="campo">
+              <label for="p-visitante">Equipo visitante</label>
+              <input id="p-visitante" required>
+            </div>
+            <div class="campo">
+              <label for="p-fecha">Fecha y hora</label>
+              <input id="p-fecha" type="datetime-local" required>
+            </div>
+          </div>
+          <div class="fila-campos">
+            <div class="campo">
+              <label for="p-cuota-local">Cuota local</label>
+              <input id="p-cuota-local" type="number" min="1.01" step="0.01" required>
+            </div>
+            <div class="campo">
+              <label for="p-cuota-empate">Cuota empate</label>
+              <input id="p-cuota-empate" type="number" min="1.01" step="0.01" required>
+            </div>
+            <div class="campo">
+              <label for="p-cuota-visitante">Cuota visitante</label>
+              <input id="p-cuota-visitante" type="number" min="1.01" step="0.01" required>
+            </div>
+          </div>
+          <button class="boton" type="submit">Crear partido</button>
+        </form>
+      </div>
+
+      <div class="tarjeta">
+        <h2>Partidos</h2>
+        <div class="tabla-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Partido</th>
+                <th>Fecha</th>
+                <th class="num">Cuotas (L / E / V)</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-partidos"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- APUESTAS :3003 — todas las apuestas -->
+    <section class="panel" id="panel-apuestas" hidden>
+      <div class="tarjeta">
+        <h2>Todas las apuestas</h2>
+        <div class="tabla-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Partido</th>
+                <th>Apuesta</th>
+                <th class="num">Monto</th>
+                <th class="num">Cuota</th>
+                <th class="num">Ganancia posible</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-apuestas"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- USUARIOS :3002 — lista y recargas -->
+    <section class="panel" id="panel-usuarios" hidden>
+      <div class="tarjeta">
+        <h2>Usuarios</h2>
+        <div class="tabla-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Usuario</th>
+                <th>Email</th>
+                <th class="num">Saldo</th>
+                <th>Recargar</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-usuarios"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="pie" id="pie-backend"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
