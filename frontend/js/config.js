@@ -15,10 +15,7 @@ const CONFIG = {
   // Puertos de cada microservicio
   PUERTO_PARTIDOS: 3001,
   PUERTO_USUARIOS: 3002,
-  PUERTO_APUESTAS: 3003,
-
-  // Usuario que entra al panel de administración
-  USUARIO_ADMIN: 'admin'
+  PUERTO_APUESTAS: 3003
 };
 
 // ------------------------------------------------------------

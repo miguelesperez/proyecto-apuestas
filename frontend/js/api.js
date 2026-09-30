@@ -10,6 +10,13 @@
 async function pedir(url, metodo = 'GET', cuerpo = null) {
   const opciones = { method: metodo, headers: {} };
 
+  // Si el admin inició sesión, enviamos su token. El frontend no lo
+  // revisa: son los microservicios los que lo validan.
+  const sesion = obtenerSesion();
+  if (sesion && sesion.token) {
+    opciones.headers['Authorization'] = `Bearer ${sesion.token}`;
+  }
+
   if (cuerpo !== null) {
     opciones.headers['Content-Type'] = 'application/json';
     opciones.body = JSON.stringify(cuerpo);
@@ -47,7 +54,9 @@ function guardarSesion(usuario) {
     id: usuario.id,
     nombre: usuario.nombre,
     usuario: usuario.usuario,
-    email: usuario.email
+    email: usuario.email,
+    rol: usuario.rol,         // lo decide el backend en el login
+    token: usuario.token      // solo lo recibe el admin
   }));
 }
 
@@ -61,8 +70,10 @@ function cerrarSesion() {
   window.location.href = 'index.html';
 }
 
+// El frontend no decide quién es admin: solo lee el rol que
+// devolvió el microservicio USUARIOS al hacer login.
 function esAdmin(sesion) {
-  return sesion && sesion.usuario === CONFIG.USUARIO_ADMIN;
+  return sesion && sesion.rol === 'admin';
 }
 
 // Protege una página: si no hay sesión, devuelve al login.
